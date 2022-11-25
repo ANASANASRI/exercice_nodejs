@@ -2,15 +2,15 @@ const express=require("express");
 const mongoose = require('mongoose');
 const app=express();
 
-const loggingMiddelwares=require("./middelwares/loggingMiddelwares")
+const loggingMiddelwares=require("./middlewares/loggingMiddelwares")
 const route=require("./routes/clientRoutes")
 app.use(express.urlencoded({extended:true}));
 app.use(loggingMiddelwares.loggingParams)
-app.use(loggingMiddelwares.loggingUrls)
+app.use(loggingMiddelwares.loggingUrls) 
 
-const clients = require("./src/modules/clients.js");
+const clients = require("./models/clients.js");
 
-const dbURI = "mongodb+srv://anasbd:anas30@cluster0.fv0ksoj.mongodb.net/db_users?retryWrites=true&w=majority";
+const dbURI = "mongodb+srv://anasbd:anas30@cluster0.fv0ksoj.mongodb.net/db_clients?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI)
         .then(result=>console.log('connect'))
@@ -23,6 +23,6 @@ app.get("/",(req,res)=>{
     res.send("<h2> Bienvenue dans notre app express </h2>");
 });
 
-app.listen(5000,function(){
+app.listen(3000,function(){
     console.log("Sever is running");
 });

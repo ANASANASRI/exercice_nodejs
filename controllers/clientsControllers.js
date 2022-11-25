@@ -1,48 +1,32 @@
-const client=require("../models/Clients")
+const clients=require("../models/clients")
 
 const getAllClients=(req,res)=>{
-client.find({}).then(function(result){
-    res.json({"results":result})
-})
+    clients.find().then(clients=>{res.json({clients})});
 }
-const getClient=(req,res)=>{
+const getClientById=(req,res)=>{
     const idp=req.params.id;
-    const client=clients.find(client=>client.id==idp);
-    res.json(client);
+    clients.findById('idp').then(client=>{res.json({client})});
 }
 
 const DelelteClient=(req,res)=>{
-    const idp=req.params.id;
-    const indexp=clients.findIndex(client=>client.id==idp);
-    clients.splice(indexp,1);
-    res.json(clients);
+    clients.findByIdAndDelete("//637366bc0cedaa54a02a82c0//").then(()=>{
+            res.send("deleted")
+        });
 }
 
 const AddClient=(req,res)=>{
-    const a= {
-        "id":clients.length + 1,
-        "name":req.params.nom
-    }
-    clients.push(a);
-    res.json(clients);
-}
+    const clien = new clients({
+            name: 'anas' , 
+            secondname:'anasri', 
+            age: 21
+    });
 
-const UpdateClient=(req,res)=>{
-    const idp=req.params.id;
-    const indexp=clients.findIndex(client=>client.id==idp);
-    const newnom=req.body.nom;
-    //const target = { a: 1, b: 2 };
-    //const source = { b: 4, c: 5 };
-    //const returnedTarget = Object.assign(target, source);
-    //
-    //
-    res.json(clients);
+    clien.save().then(()=>{res.send("add done")});
 }
 
 module.exports={
     getAllClients,
-    getClient,
-    AddClient,
-    UpdateClient,
-    DelelteClient
+    getClientById,
+    DelelteClient,
+    AddClient
 } 
