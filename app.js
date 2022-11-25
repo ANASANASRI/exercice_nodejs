@@ -8,11 +8,12 @@ app.use(express.urlencoded({extended:true}));
 app.use(loggingMiddelwares.loggingParams)
 app.use(loggingMiddelwares.loggingUrls) 
 
+require('dotenv').config()
+console.log(process.env.dbURL)
+
 const clients = require("./models/clients.js");
 
-const dbURI = "mongodb+srv://anasbd:anas30@cluster0.fv0ksoj.mongodb.net/db_clients?retryWrites=true&w=majority";
-
-mongoose.connect(dbURI)
+mongoose.connect(process.env.dbURL)
         .then(result=>console.log('connect'))
         .catch(err => console.log(err));
 
