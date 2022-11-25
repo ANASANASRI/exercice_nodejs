@@ -5,23 +5,18 @@ const getAllClients=(req,res)=>{
 }
 const getClientById=(req,res)=>{
     const idp=req.params.id;
-    clients.findById('idp').then(client=>{res.json({client})});
+    clients.findById(idp).then(client=>{res.json({client})});
 }
 
 const DelelteClient=(req,res)=>{
-    clients.findByIdAndDelete("//637366bc0cedaa54a02a82c0//").then(()=>{
+    const idp=req.params.id;
+    clients.findByIdAndDelete(idp).then(()=>{
             res.send("deleted")
         });
 }
 
 const AddClient=(req,res)=>{
-    const clien = new clients({
-            name: 'anas' , 
-            secondname:'anasri', 
-            age: 21
-    });
-
-    clien.save().then(()=>{res.send("add done")});
+    clients.create(req.body).then(()=>{res.send("add done")});
 }
 
 module.exports={

@@ -8,5 +8,4 @@ const clientSchema=new mongoose.Schema({
 
 const clients=mongoose.model('clients',clientSchema);
 
-
 module.exports=clients;
