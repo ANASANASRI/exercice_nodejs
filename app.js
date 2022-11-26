@@ -9,7 +9,7 @@ app.use(loggingMiddelwares.loggingParams)
 app.use(loggingMiddelwares.loggingUrls) 
 
 require('dotenv').config()
-console.log(process.env.dbURL)
+/* console.log(process.env.dbURL)*/
 
 const clients = require("./models/clients.js");
 
