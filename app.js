@@ -1,13 +1,14 @@
 const express=require("express");
 const mongoose = require('mongoose');
 const app=express();
-//cost inporter cost
+const cors=require("cors"); //cors inporter cors
 
 const loggingMiddelwares=require("./middlewares/loggingMiddelwares")
 const route=require("./routes/productRoutes")
 app.use(express.urlencoded({extended:true}));
 app.use(loggingMiddelwares.loggingParams)
 app.use(loggingMiddelwares.loggingUrls) 
+app.use(cors())
 
 require('dotenv').config()
 /* console.log(process.env.dbURL)*/
