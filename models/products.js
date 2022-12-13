@@ -1,11 +1,11 @@
 const mongoose=require("mongoose") 
 
-const clientSchema=new mongoose.Schema({
+const productSchema=new mongoose.Schema({
         id:Number ,
         name:String ,
         price:Number
 });
 
-const products=mongoose.model('products',clientSchema);
+const products=mongoose.model('products',productSchema);
 
 module.exports=products;
