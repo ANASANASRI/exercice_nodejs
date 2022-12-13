@@ -1,9 +1,9 @@
 const users = require("../models/clients.js");
 
-const getAllClients=async ()=>{
+const getAllProducts=async ()=>{
 
 };
 
 exports={
-    getAllClients
+    getAllProducts
 }
