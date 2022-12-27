@@ -5,7 +5,8 @@ const cors=require("cors"); //cors inporter cors
 
 const loggingMiddelwares=require("./middlewares/loggingMiddelwares")
 const route=require("./routes/productRoutes")
-app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+//app.use(express.urlencoded({extended:true}));
 app.use(loggingMiddelwares.loggingParams)
 app.use(loggingMiddelwares.loggingUrls) 
 app.use(cors())
