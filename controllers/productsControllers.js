@@ -1,27 +1,64 @@
-const products=require("../models/products")
+const prodService=require("../services/productService")
 
-const getAllProducts=(req,res)=>{
-    products.find().then(products=>{res.json({products})});
-}
-const getProductById=(req,res)=>{
-    const idp=req.params.id;
-    products.findById(idp).then(product=>{res.json({product})});
-}
+const getAllProducts=async (req,res)=>{
+    try{
+        const result=await prodService.getProducts()
+        res.status(200).json(result)
+    }catch(error){
+        res.status(500).json({err:error})
+    }
 
-const DelelteProduct=(req,res)=>{
-    const idp=req.params.id;
-    products.findByIdAndDelete(idp).then(()=>{
-            res.send("deleted")
-        });
 }
 
-const AddProduct=(req,res)=>{
-    products.create(req.body).then(()=>{res.send("add done")});
+const getProductById=async (req,res)=>{
+    try{
+        const result=await prodService.getProductById(req.params.id)
+        res.status(200).json(result)
+    }catch(error){
+        res.status(500).json({err:error})
+    }
+}
+
+const addProduct=(req,res)=>{
+    product.create(req.body)
+    .then(result=>res.json({msg:"le produit est bien ajouté"}))
+    
+}
+
+
+const deleteProduct=async (req,res)=>{
+    try{
+        const reslt= await prodService.deleteProductById(req.params.id)
+        res.status(200).json(reslt)
+    }catch(error){
+        res.status(500).json({err:error})
+    }
+}
+
+const createProduct=async (req,res)=>{
+    try{
+        const result= await prodService.addProduct(req.body)
+        res.status(200).json(result)
+    }catch(error){
+        res.status(500).json({err:error})
+    }
+
+}
+const updateProductById=async (req,res)=>{
+    try{
+        const result= await prodService.updateProduct(req.body)
+        res.status(200).json(result)
+    }catch(error){
+        res.status(500).json({err:error})
+    }
+
 }
 
 module.exports={
     getAllProducts,
     getProductById,
-    DelelteProduct,
-    AddProduct
-} 
+    deleteProduct,
+    createProduct,
+    addProduct,
+    updateProductById
+}

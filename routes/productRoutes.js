@@ -4,7 +4,8 @@ const productsControllers=require("../controllers/productsControllers")
 
 route.get("/",productsControllers.getAllProducts)
 route.get("/:id",productsControllers.getProductById)
-route.delete("/:id",productsControllers.DelelteProduct)
-route.post("/add",productsControllers.AddProduct)
+route.delete("/:id",productsControllers.deleteProduct)
+route.post("/",productsControllers.createProduct)
+route.put("/:id",productsControllers.updateProductById)
 
 module.exports=route
