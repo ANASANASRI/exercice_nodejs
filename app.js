@@ -4,7 +4,9 @@ const app=express();
 const cors=require("cors"); //cors inporter cors
 
 const loggingMiddelwares=require("./middlewares/loggingMiddelwares")
-const route=require("./routes/productRoutes")
+const prodRoute=require("./routes/productRoutes")
+const catRoute=require("./routes/categoryRoutes")
+
 app.use(express.json());
 //app.use(express.urlencoded({extended:true}));
 app.use(loggingMiddelwares.loggingParams)
@@ -20,7 +22,8 @@ mongoose.connect(process.env.dbURL)
         .then(result=>console.log('connect'))
         .catch(err => console.log(err));
 
-app.use("/products",route)
+app.use("/products",prodRoute)
+app.use("/categorys",catRoute)
 
 app.get("/",(req,res)=>{
     console.log("Home Page")

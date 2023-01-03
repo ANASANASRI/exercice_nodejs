@@ -1,4 +1,4 @@
-const users = require("../models/clients.js");
+const users = require("../models/prosduct.js");
 
 const getAllProducts=async ()=>{
 
