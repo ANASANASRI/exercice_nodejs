@@ -1,8 +1,9 @@
-const products=require("../services/categoryServices")
+const categoryService=require("../services/categoryServices")
 
-const creatCategory=(req,res)=>{
+const createCategory=async (req,res)=>{
     try {
-        const result= categoryService.AddCategory(req.body)
+        console.log(req.body)
+        const result= await categoryService.addCategory(req.body)
         res.status(200).json(result)
     } catch (error) {
         res.status(500).json(error)
@@ -19,6 +20,6 @@ const getCategory=async (req,res)=>{
 }
 
 module.exports={
-    creatCategory,
+    createCategory,
     getCategory
 } 

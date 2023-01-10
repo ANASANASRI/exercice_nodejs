@@ -23,7 +23,7 @@ mongoose.connect(process.env.dbURL)
         .catch(err => console.log(err));
 
 app.use("/products",prodRoute)
-app.use("/categorys",catRoute)
+app.use("/categories",catRoute)
 
 app.get("/",(req,res)=>{
     console.log("Home Page")
