@@ -3,6 +3,11 @@ const Product=require("../models/products")
 const getProducts= async()=>{
     return await Product.find()
 }
+
+const addProduct=async (product)=>{
+    return await Product.create(product);
+    
+}
 const getProductById=async (id)=>{
     return await Product.findOne({_id:id})
     
@@ -10,10 +15,7 @@ const getProductById=async (id)=>{
 const deleteProductById=async (id)=>{
     return await Product.findByIdAndDelete({_id:id})
 }
-const addProduct=async (product)=>{
-    return await Product.create(product);
-    
-}
+
 const updateProduct=async (product)=>{
     console.log(product)
     return await Product.findByIdAndUpdate(product._id,product)
