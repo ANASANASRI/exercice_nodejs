@@ -22,7 +22,7 @@ const getCategory=async (req,res)=>{
 
 const getCategoryById=async (req,res)=>{
     try{
-        const result=await prodService.getCategoryById(req.params.id)
+        const result=await categoryService.getCategoryById(req.params.id)
         res.status(200).json(result)
     }catch(error){
         res.status(500).json({err:error})
@@ -31,15 +31,15 @@ const getCategoryById=async (req,res)=>{
 
 const addCategory=(req,res)=>{
     Category.create(req.body)
-    .then(result=>res.json({msg:"le produit est bien ajouté"}))
+    .then(result=>res.json({msg:"la categorie est bien ajouté"}))
     
 }
 
 
 const deleteCategory=async (req,res)=>{
     try{
-        const reslt= await CatService.deleteCategoryById(req.params.id)
-        res.status(200).json(reslt)
+        const result= await categoryService.deleteCategoryById(req.params.id)
+        res.status(200).json(result)
     }catch(error){
         res.status(500).json({err:error})
     }

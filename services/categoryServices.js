@@ -1,11 +1,11 @@
-const category = require("../models/Category");
+const Category=require("../models/categories");
 
 const addCategory=async(c)=>{
-    return await category.create(c)
+    return await Category.create(c)
 };
 
 const getAllCategory=async()=>{
-    return await category.find()
+    return await Category.find()
 };
 
 const getCategoryById=async (id)=>{
@@ -16,9 +16,9 @@ const deleteCategoryById=async (id)=>{
     return await Category.findByIdAndDelete({_id:id})
 }
 
-const updateCategory=async (Category)=>{
-    console.log(Category)
-    return await Category.findByIdAndUpdate(Category._id,Category)
+const updateCategory=async (category)=>{
+    console.log(category)
+    return await Category.findByIdAndUpdate(category._id,category)
     
 }
 

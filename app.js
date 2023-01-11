@@ -9,14 +9,16 @@ const catRoute=require("./routes/categoryRoutes")
 
 app.use(express.json());
 //app.use(express.urlencoded({extended:true}));
-app.use(loggingMiddelwares.loggingParams)
-app.use(loggingMiddelwares.loggingUrls) 
-app.use(cors())
+app.use(loggingMiddelwares.loggingParams);
+app.use(loggingMiddelwares.loggingUrls) ;
+
+app.use(cors());
 
 require('dotenv').config()
 /* console.log(process.env.dbURL)*/
 
 const products = require("./models/products.js");
+const categories = require("./models/categories.js")
 
 mongoose.connect(process.env.dbURL)
         .then(result=>console.log('connect'))
