@@ -4,6 +4,7 @@ const usersControllers=require("../controllers/usersControllers")
 
 route.get("/",usersControllers.getUser)
 route.post("/",usersControllers.createUser)
+//route.route("/").get(usersControllers.getUser).post(usersControllers.createUser)
 route.get("/:id",usersControllers.getUserById)
 route.delete("/:id",usersControllers.deleteUser)
 route.put("/:id",usersControllers.updateUserById)

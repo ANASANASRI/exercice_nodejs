@@ -19,6 +19,8 @@ require('dotenv').config()
 
 const products = require("./models/products.js");
 const categories = require("./models/categories.js")
+const user = require("./models/user.js")
+
 
 mongoose.connect(process.env.dbURL)
         .then(result=>console.log('connect'))
@@ -26,6 +28,8 @@ mongoose.connect(process.env.dbURL)
 
 app.use("/products",prodRoute)
 app.use("/categories",catRoute)
+app.use("/users",userRoute)
+
 
 app.get("/",(req,res)=>{
     console.log("Home Page")
