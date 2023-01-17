@@ -1,9 +1,9 @@
-const userService=require("../services/userServices")
+const userServices=require("../services/userServices")
 
 const createUser=async (req,res)=>{
     try {
         console.log(req.body)
-        const result= await userService.addUser(req.body)
+        const result= await userServices.addUser(req.body)
         res.status(200).json(result)
     } catch (error) {
         res.status(500).json(error)
@@ -12,7 +12,7 @@ const createUser=async (req,res)=>{
 
 const getUser=async (req,res)=>{
     try {
-        const result=await userService.getAllUser()
+        const result=await userServices.getAllUser()
         res.status(200).json(result)
     } catch (error) {
         res.status(500).json(error)
@@ -22,7 +22,7 @@ const getUser=async (req,res)=>{
 
 const getUserById=async (req,res)=>{
     try{
-        const result=await userService.getUserById(req.params.id)
+        const result=await userServices.getUserById(req.params.id)
         res.status(200).json(result)
     }catch(error){
         res.status(500).json({err:error})
@@ -38,7 +38,7 @@ const addUser=(req,res)=>{
 
 const deleteUser=async (req,res)=>{
     try{
-        const result= await userService.deleteUserById(req.params.id)
+        const result= await userServices.deleteUserById(req.params.id)
         res.status(200).json(result)
     }catch(error){
         res.status(500).json({err:error})
@@ -48,7 +48,7 @@ const deleteUser=async (req,res)=>{
 
 const updateUserById=async (req,res)=>{
     try{
-        const result= await userService.updateUser(req.body)
+        const result= await userServices.updateUser(req.body)
         res.status(200).json(result)
     }catch(error){
         res.status(500).json({err:error})

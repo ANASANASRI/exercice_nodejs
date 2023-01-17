@@ -6,6 +6,7 @@ const cors=require("cors"); //cors inporter cors
 const loggingMiddelwares=require("./middlewares/loggingMiddelwares")
 const prodRoute=require("./routes/productRoutes")
 const catRoute=require("./routes/categoryRoutes")
+const userRoute=require("./routes/userRoutes")
 
 app.use(express.json());
 //app.use(express.urlencoded({extended:true}));
@@ -19,7 +20,7 @@ require('dotenv').config()
 
 const products = require("./models/products.js");
 const categories = require("./models/categories.js")
-const user = require("./models/user.js")
+const users = require("./models/user.js")
 
 
 mongoose.connect(process.env.dbURL)

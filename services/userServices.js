@@ -1,6 +1,11 @@
 const User=require("../models/user");
+const bcrypt=require("bcrypt")
 
 const addUser=async(u)=>{
+    const salt=await bcrypt.genSalt()
+    const hashedPassword=await bcrypt.hash(u.password,salt)
+    u.password=hashedPassword
+
     return await User.create(u)
 };
 
